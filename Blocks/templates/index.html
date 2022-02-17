@@ -1,0 +1,30 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+
+<form action="/" method="POSt">
+    {% csrf_token %}
+    <div class="form-group">
+        <label>Кредитор</label>
+        <input type="text" name="lender">
+    </div>
+    <div class="form-group">
+        <label>Сумма</label>
+        <input type="text" name="amount">
+    </div>
+    <div class="form-group">
+        <label>Заёмщик</label>
+        <input type="text" name="borrower">
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}
+
+{% block checking %}
+    {% for res in results %}
+        <div class="result">
+            <p>Номер блока {{ res.block }} состояние {{ res.result }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
